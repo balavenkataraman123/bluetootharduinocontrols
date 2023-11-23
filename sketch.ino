@@ -3,10 +3,10 @@
 void setup() {
   Serial.begin(9600);
   pinMode(LED_PIN, OUTPUT); // set the digital pin as output:
+  Serial.println("Send a command");
 }
 
 void loop() {
-  Serial.println("Send a command");
   if (Serial.available()) { // if there is data comming
     String command = Serial.readStringUntil('\n'); // read string until meet newline character
 
