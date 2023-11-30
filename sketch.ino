@@ -11,7 +11,6 @@ const int relay_cutoff_pin = 10; // this makes the car stop when the coil is low
 
 void setup() {
   Serial.begin(9600); // begin serial communication with a baud rate of 9600
-  receiver.enableIRIn(); // enable the receiver
   str_servo.attach(9); // attach servo to pin 9
   str_servo.write(straight_angle); // set steering angle to the default angle
   pinMode(9, OUTPUT); // configures all the pins to output
@@ -32,7 +31,7 @@ void loop() {
       digitalWrite(relay_cutoff_pin,HIGH);
     }
     else if (rack_angle < -900){
-      str_servo.write(straight_angle + (1000 - rack_angle)); // makes the car go backward
+      str_servo.write(straight_angle + (1000 + rack_angle)); // makes the car go backward
       digitalWrite(relay_directional_pin, HIGH);
       digitalWrite(relay_cutoff_pin,HIGH);
     }
@@ -44,3 +43,4 @@ void loop() {
   }
     
 }
+
